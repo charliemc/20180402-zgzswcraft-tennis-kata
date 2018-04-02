@@ -21,20 +21,17 @@ export class TennisGame1 implements TennisGame {
     if (this.isTie) {
       return this.getTieScore();
     } else if (this.player1Score >= 4 || this.player2Score >= 4) {
-      let score: string = '';
       const minusResult: number = this.player1Score - this.player2Score;
 
       if (minusResult === 1) {
-        score = 'Advantage player1';
+        return 'Advantage player1';
       } else if (minusResult === -1) {
-        score = 'Advantage player2';
+        return 'Advantage player2';
       } else if (minusResult >= 2) {
-        score = 'Win for player1';
+        return 'Win for player1';
       } else {
-        score = 'Win for player2';
+        return 'Win for player2';
       }
-
-      return score;
     } else {
       return `${this.getScoreName(this.player1Score)}-${this.getScoreName(this.player2Score)}`;
     }
