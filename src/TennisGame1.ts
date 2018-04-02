@@ -18,11 +18,10 @@ export class TennisGame1 implements TennisGame {
   }
 
   getScore(): string {
-    let score: string = '';
-
     if (this.isTie) {
       return this.getTieScore();
     } else if (this.player1Score >= 4 || this.player2Score >= 4) {
+      let score: string = '';
       const minusResult: number = this.player1Score - this.player2Score;
 
       if (minusResult === 1) {
@@ -34,21 +33,12 @@ export class TennisGame1 implements TennisGame {
       } else {
         score = 'Win for player2';
       }
+
+      return score;
     } else {
-      let tempScore: number = 0;
-
-      for (let i = 1; i < 3; i++) {
-        if (i === 1) {
-          tempScore = this.player1Score;
-        } else { 
-          score += '-';
-          tempScore = this.player2Score; 
-        }
-
-        score += this.getScoreName(tempScore);
-      }
+      return `${this.getScoreName(this.player1Score)}-${this.getScoreName(this.player2Score)}`;
     }
-    return score;
+    
   }
 
   private get isTie(): boolean {
