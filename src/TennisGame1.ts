@@ -21,19 +21,10 @@ export class TennisGame1 implements TennisGame {
     if (this.isTie) {
       return this.getTieScore();
     } else if (this.isAdvantageOrWin) {
-      if (this.player1ScoreAdvantage === 1) {
-        return 'Advantage player1';
-      } else if (this.player1ScoreAdvantage === -1) {
-        return 'Advantage player2';
-      } else if (this.player1ScoreAdvantage >= 2) {
-        return 'Win for player1';
-      } else {
-        return 'Win for player2';
-      }
+      return this.getAdvantageOrWinScore();
     } else {
       return `${this.getScoreName(this.player1Score)}-${this.getScoreName(this.player2Score)}`;
     }
-    
   }
 
   private get isTie(): boolean {
@@ -64,6 +55,18 @@ export class TennisGame1 implements TennisGame {
         case 3:
           return 'Forty';
       }
+  }
+
+  private getAdvantageOrWinScore(): string {
+    if (this.player1ScoreAdvantage === 1) {
+      return 'Advantage player1';
+    } else if (this.player1ScoreAdvantage === -1) {
+      return 'Advantage player2';
+    } else if (this.player1ScoreAdvantage >= 2) {
+      return 'Win for player1';
+    } else {
+      return 'Win for player2';
+    }
   }
 
   private get player1ScoreAdvantage(): number {
