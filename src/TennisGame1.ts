@@ -41,7 +41,8 @@ export class TennisGame1 implements TennisGame {
         if (i === 1) {
           tempScore = this.player1Score;
         } else { 
-          score += '-'; tempScore = this.player2Score; 
+          score += '-';
+          tempScore = this.player2Score; 
         }
 
         switch (tempScore) {
