@@ -1,5 +1,11 @@
 import { TennisGame } from './TennisGame';
 
+const SCORE_NAMES = {
+  0: 'Love',
+  1: 'Fifteen',
+  2: 'Thirty',
+  3: 'Forty'
+}
 
 export class TennisGame1 implements TennisGame {
   private player1Score: number = 0;
@@ -32,29 +38,13 @@ export class TennisGame1 implements TennisGame {
   }
 
   private getTieScore(): string {
-    switch (this.player1Score) {
-        case 0:
-          return 'Love-All';
-        case 1:
-          return 'Fifteen-All';
-        case 2:
-          return 'Thirty-All';
-        default:
-          return 'Deuce';
-      }
+    return this.player1Score < 3
+      ? `${this.getScoreName(this.player1Score)}-All`
+      : 'Deuce';
   }
 
   private getScoreName(score: number): string {
-    switch (score) {
-        case 0:
-          return 'Love';
-        case 1:
-          return 'Fifteen';
-        case 2:
-          return 'Thirty';
-        case 3:
-          return 'Forty';
-      }
+    return SCORE_NAMES[score];
   }
 
   private getAdvantageOrWinScore(): string {
