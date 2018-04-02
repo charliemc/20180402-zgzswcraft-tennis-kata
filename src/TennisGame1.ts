@@ -20,7 +20,7 @@ export class TennisGame1 implements TennisGame {
   getScore(): string {
     if (this.isTie) {
       return this.getTieScore();
-    } else if (this.player1Score >= 4 || this.player2Score >= 4) {
+    } else if (this.isAdvantageOrWin) {
       if (this.player1ScoreAdvantage === 1) {
         return 'Advantage player1';
       } else if (this.player1ScoreAdvantage === -1) {
@@ -67,6 +67,10 @@ export class TennisGame1 implements TennisGame {
   }
 
   private get player1ScoreAdvantage(): number {
-    return this.player1Score - this.player2Score
+    return this.player1Score - this.player2Score;
+  }
+
+  private get isAdvantageOrWin(): boolean {
+    return this.player1Score >= 4 || this.player2Score >= 4;
   }
 }
