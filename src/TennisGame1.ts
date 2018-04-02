@@ -45,20 +45,7 @@ export class TennisGame1 implements TennisGame {
           tempScore = this.player2Score; 
         }
 
-        switch (tempScore) {
-          case 0:
-            score += 'Love';
-            break;
-          case 1:
-            score += 'Fifteen';
-            break;
-          case 2:
-            score += 'Thirty';
-            break;
-          case 3:
-            score += 'Forty';
-            break;
-        }
+        score += this.getScoreName(tempScore);
       }
     }
     return score;
@@ -78,6 +65,19 @@ export class TennisGame1 implements TennisGame {
           return 'Thirty-All';
         default:
           return 'Deuce';
+      }
+  }
+
+  private getScoreName(score: number): string {
+    switch (score) {
+        case 0:
+          return 'Love';
+        case 1:
+          return 'Fifteen';
+        case 2:
+          return 'Thirty';
+        case 3:
+          return 'Forty';
       }
   }
 }
