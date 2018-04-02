@@ -23,7 +23,7 @@ export class TennisGame1 implements TennisGame {
     } else if (this.isAdvantageOrWin) {
       return this.getAdvantageOrWinScore();
     } else {
-      return `${this.getScoreName(this.player1Score)}-${this.getScoreName(this.player2Score)}`;
+      return this.getRegularScore();
     }
   }
 
@@ -67,6 +67,10 @@ export class TennisGame1 implements TennisGame {
     } else {
       return 'Win for player2';
     }
+  }
+
+  private getRegularScore(): string {
+    return `${this.getScoreName(this.player1Score)}-${this.getScoreName(this.player2Score)}`;
   }
 
   private get player1ScoreAdvantage(): number {
